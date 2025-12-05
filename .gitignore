@@ -1,0 +1,51 @@
+# --- Xcode ---
+# Build generated
+build/
+DerivedData/
+
+# Various settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+
+# --- Xcode State ---
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+
+# --- Swift Package Manager ---
+.build/
+.swiftpm/xcode/
+
+# --- macOS System ---
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# --- Obj-C / Legacy ---
+*.hmap
+
+# --- Playground ---
+timeline.xctimeline
+playground.xcworkspace
+
+# --- Crashlytics / Firebase ---
+dSYM/
+
+# 1. Ignore top-level workspaces (if you ever add CocoaPods later)
+*.xcworkspace
+
+# 2. BUT... un-ignore the critical embedded workspace inside your project
+!*.xcodeproj/project.xcworkspace/
+
+# 3. Inside that embedded workspace, ignore the user-specific junk...
+*.xcodeproj/project.xcworkspace/xcuserdata/
+
+# 4. ...but KEEP the shared data (SPM Locks & Shared Schemes)
+!*.xcodeproj/project.xcworkspace/xcshareddata/

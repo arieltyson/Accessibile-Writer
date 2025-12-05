@@ -1,51 +1,104 @@
-# --- Xcode ---
-# Build generated
+# ============================================================================
+# XCODE BUILD ARTIFACTS & DERIVED DATA
+# ============================================================================
 build/
 DerivedData/
+*.ipa
+*.app
+*.dSYM.zip
 
-# Various settings
-*.pbxuser
-!default.pbxuser
-*.mode1v3
-!default.mode1v3
-*.mode2v3
-!default.mode2v3
-*.perspectivev3
-!default.perspectivev3
+# ============================================================================
+# XCODE USER-SPECIFIC FILES (DO NOT COMMIT)
+# ============================================================================
+# User-specific UI state
 xcuserdata/
-
-# --- Xcode State ---
-*.xccheckout
-*.moved-aside
 *.xcuserstate
+*.xcworkspace/xcuserdata/
 
-# --- Swift Package Manager ---
+# Workspace settings (if not shared with team)
+# *.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+
+# Breakpoints and debug info (per-user)
+*.xcbkptlist
+
+# ============================================================================
+# XCODE PROJECT FILES (OPTIONAL, but commonly ignored)
+# ============================================================================
+# These are usually committed, but some teams ignore them:
+# *.xcodeproj/xcuserdata/
+# *.xcodeproj/project.xcworkspace/xcuserdata/
+
+# ============================================================================
+# SWIFT PACKAGE MANAGER
+# ============================================================================
 .build/
-.swiftpm/xcode/
+.swiftpm/
+Package.resolved
 
-# --- macOS System ---
+# ============================================================================
+# COCOAPODS (if using)
+# ============================================================================
+# Pods/
+# Podfile.lock
+
+# ============================================================================
+# CARTHAGE (if using)
+# ============================================================================
+# Carthage/Checkouts
+# Carthage/Build
+
+# ============================================================================
+# FASTLANE
+# ============================================================================
+# fastlane/report.xml
+# fastlane/Preview.html
+# fastlane/screenshots/**/*.png
+# fastlane/test_output
+
+# ============================================================================
+# MACOS SYSTEM FILES
+# ============================================================================
 .DS_Store
 .AppleDouble
 .LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.TemporaryItems
 
-# --- Obj-C / Legacy ---
-*.hmap
+# ============================================================================
+# IDE / EDITOR
+# ============================================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.vim/
+.project
+.classpath
 
-# --- Playground ---
-timeline.xctimeline
-playground.xcworkspace
+# ============================================================================
+# XCODE LEGACY / MISC
+# ============================================================================
+*.xccheckout
+*.moved-aside
 
-# --- Crashlytics / Firebase ---
+# ============================================================================
+# DEBUGGING & PROFILING
+# ============================================================================
 dSYM/
+*.profdata
+xcov_report/
 
-# 1. Ignore top-level workspaces (if you ever add CocoaPods later)
-*.xcworkspace
+# ============================================================================
+# ENVIRONMENT VARIABLES
+# ============================================================================
+.env
+.env.local
+.env.*.local
 
-# 2. BUT... un-ignore the critical embedded workspace inside your project
-!*.xcodeproj/project.xcworkspace/
-
-# 3. Inside that embedded workspace, ignore the user-specific junk...
-*.xcodeproj/project.xcworkspace/xcuserdata/
-
-# 4. ...but KEEP the shared data (SPM Locks & Shared Schemes)
-!*.xcodeproj/project.xcworkspace/xcshareddata/
+# ============================================================================
+# OS-SPECIFIC
+# ============================================================================
+Thumbs.db

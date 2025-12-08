@@ -39,7 +39,7 @@ struct ContentView: View {
         }
         // Column 3: The Inspector
         .inspector(isPresented: $store.isInspectorPresented) {
-            FormattingInspectorStub()
+            FormattingInspectorView()
         }
     }
 }

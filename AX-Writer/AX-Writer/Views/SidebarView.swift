@@ -9,12 +9,11 @@ struct SidebarView: View {
                 NavigationLink(value: page.id) {
                     PageRow(page: $page)
                 }
-                .accessibilityElement(children: .combine)
-                .accessibilityAction(named: page.isBookmarked ? "Remove Bookmark" : "Bookmark") {
+                .accessibilityAction(
+                    named: page.isBookmarked ? "Remove Bookmark" : "Bookmark"
+                ) {
                     page.isBookmarked.toggle()
                 }
-                .accessibilityLabel("Page \(page.number)")
-                .accessibilityValue(page.isBookmarked ? "Bookmarked" : "")
             }
         }
         .navigationTitle("Pages")

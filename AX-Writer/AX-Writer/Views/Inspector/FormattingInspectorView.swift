@@ -1,6 +1,9 @@
 import SwiftUI
 
 struct FormattingInspectorView: View {
+    @Namespace private var focusNamespace
+    @AccessibilityFocusState private var isHeaderFocused: Bool
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
@@ -10,6 +13,7 @@ struct FormattingInspectorView: View {
                     .accessibilityAddTraits(.isHeader)
                     .padding(.top)
                     .padding(.horizontal)
+                    .accessibilityFocused($isHeaderFocused)
 
                 Divider()
 
@@ -36,9 +40,14 @@ struct FormattingInspectorView: View {
 
                 Toggle("Bold Text", isOn: .constant(true))
                     .padding(.horizontal)
+                    .keyboardShortcut("b", modifiers: .command)
 
                 Spacer()
             }
+        }
+        .task {
+            try? await Task.sleep(for: .milliseconds(100))
+            isHeaderFocused = true
         }
     }
 }

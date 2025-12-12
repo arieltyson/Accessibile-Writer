@@ -5,14 +5,11 @@ struct ContentView: View {
     
     var body: some View {
         NavigationSplitView {
-            // Column 1: The Sidebar
             SidebarView(store: store)
         } detail: {
-            // Column 2: The Editor
             if let selectedID = store.selection,
                let index = store.pages.firstIndex(where: { $0.id == selectedID }) {
-                
-                // We bind directly to the store's array index to allow editing
+
                 TextEditor(text: $store.pages[index].content)
                     .font(.body)
                     .padding()
@@ -21,9 +18,18 @@ struct ContentView: View {
                 ContentUnavailableView("Select a Page", systemImage: "doc.text")
             }
         }
-        // Column 3: The Inspector
         .inspector(isPresented: $store.isInspectorPresented) {
             FormattingInspectorView()
+        }
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    store.isInspectorPresented.toggle()
+                } label: {
+                    Label("Toggle Inspector", systemImage: "sidebar.right")
+                }
+                .keyboardShortcut("i", modifiers: [.command, .option])
+            }
         }
     }
 }

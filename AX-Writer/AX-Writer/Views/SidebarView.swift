@@ -2,13 +2,19 @@ import SwiftUI
 
 struct SidebarView: View {
     @Bindable var store: DocumentStore
-    
+
     var body: some View {
         List(selection: $store.selection) {
-            ForEach(store.pages) { page in
+            ForEach($store.pages) { $page in
                 NavigationLink(value: page.id) {
-                    PageRow(page: page)
+                    PageRow(page: $page)
                 }
+                .accessibilityElement(children: .combine)
+                .accessibilityAction(named: page.isBookmarked ? "Remove Bookmark" : "Bookmark") {
+                    page.isBookmarked.toggle()
+                }
+                .accessibilityLabel("Page \(page.number)")
+                .accessibilityValue(page.isBookmarked ? "Bookmarked" : "")
             }
         }
         .navigationTitle("Pages")
@@ -22,31 +28,11 @@ struct SidebarView: View {
     }
 }
 
-struct PageRow: View {
-    let page: DocumentPage
-    
-    var body: some View {
-        HStack {
-            Image(systemName: "doc.text")
-                .accessibilityHidden(true)
-            
-            Text("Page \(page.number)")
-            
-            Spacer()
-            
-            if page.isBookmarked {
-                Image(systemName: "bookmark.fill")
-                    .foregroundStyle(.blue)
-                    .accessibilityLabel("Bookmarked")
-            }
-        }
-        .padding(.vertical, 4)
-        .accessibilityElement(children: .combine)
-    }
-}
-
 #Preview {
     let store = DocumentStore()
-    store.pages[2].isBookmarked = true
-    return SidebarView(store: store)
+    return NavigationSplitView {
+        SidebarView(store: store)
+    } detail: {
+        Text("Preview")
+    }
 }

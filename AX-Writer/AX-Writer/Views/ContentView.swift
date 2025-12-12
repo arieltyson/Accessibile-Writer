@@ -6,23 +6,7 @@ struct ContentView: View {
     var body: some View {
         NavigationSplitView {
             // Column 1: The Sidebar
-            List(selection: $store.selection) {
-                ForEach(store.pages) { page in
-                    NavigationLink(value: page.id) {
-                        HStack {
-                            Image(systemName: "doc.text")
-                            Text("Page \(page.number)")
-                            Spacer()
-                            if page.isBookmarked {
-                                Image(systemName: "bookmark.fill")
-                                    .foregroundStyle(.blue)
-                            }
-                        }
-                        .padding(.vertical, 4)
-                    }
-                }
-            }
-            .navigationTitle("Pages")
+            SidebarView(store: store)
         } detail: {
             // Column 2: The Editor
             if let selectedID = store.selection,

@@ -1,9 +1,10 @@
 import SwiftUI
 
 struct MetadataView: View {
-    let title: String
-    let author: String
-    let description: String
+    let title: String = "Accessibility on macOS"
+    let author: String = "Apple Developer"
+    let description: String =
+        "Learn how to make your Mac app more accessible to everyone."
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -17,7 +18,8 @@ struct MetadataView: View {
                 .accessibilitySortPriority(1)
 
             Text(description)
-                .font(.body)
+                .font(.caption)
+                .foregroundStyle(.secondary)
         }
         .padding()
         .background(Color.gray.opacity(0.1))
@@ -27,11 +29,6 @@ struct MetadataView: View {
 }
 
 #Preview {
-    MetadataView(
-        title: "Accessibility on macOS",
-        author: "Apple Developer",
-        description:
-            "Learn how to make your Mac app more accessible to everyone."
-    )
-    .padding()
+    MetadataView()
+        .padding()
 }

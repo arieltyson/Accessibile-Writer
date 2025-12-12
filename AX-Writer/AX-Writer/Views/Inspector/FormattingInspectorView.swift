@@ -16,6 +16,10 @@ struct FormattingInspectorView: View {
                     .accessibilityFocused($isHeaderFocused)
 
                 Divider()
+                
+                MetadataView()
+                
+                Divider()
 
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Style Presets")
